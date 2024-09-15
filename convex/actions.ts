@@ -5,8 +5,8 @@ import OpenAI from "openai";
 import { requireUser } from "./helpers";
 
 const openai = new OpenAI({
-    baseURL:"https://openrouter.ai/api/v1",
-    apiKey:process.env.OPENROUTER_API_KEY
+    // baseURL:"https://openrouter.ai/api/v1",
+    apiKey:process.env.OPENAI_API_KEY//OPENROUTER_API_KEY
 })
 
 export const generateTodos = action({
@@ -16,7 +16,7 @@ export const generateTodos = action({
     handler: async (ctx, args) => {
         const user = await requireUser(ctx);
         const response = await openai.chat.completions.create({
-            model:"openai/gpt-40-mini",
+            model:"gpt-4o-mini",//"openai/gpt-40-mini",
             messages:[
                 {
                     role: "system",
